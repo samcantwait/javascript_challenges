@@ -1,3 +1,5 @@
+// Write a function called findLongestSubstring, which accepts a string and returns the length of the longest substring with all distinct characters.
+
 function findLongestSubstring(str) {
     if (str.length < 1) return 0;
     let obj = {};
