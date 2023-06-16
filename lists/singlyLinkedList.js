@@ -1,5 +1,3 @@
-// Build all the functions needed for a singley linked list.
-
 class Node {
     constructor(val) {
         this.val = val;
@@ -38,20 +36,11 @@ class SinglyLinkedList {
         this.tail = preNode;
         this.tail.next = null;
         this.length--;
-        return curNode;
-    }
-
-    unshift(val) {
-        const newNode = new Node(val)
-        if (!this.head) {
-            this.head = newNode;
-            this.tail = this.head;
-        } else {
-            newNode.next = this.head;
-            this.head = newNode;
+        if (this.length === 0) {
+            this.head = null;
+            this.tail = null;
         }
-        this.length++;
-        return this;
+        return curNode;
     }
 
     shift() {
@@ -59,7 +48,22 @@ class SinglyLinkedList {
         const curHead = this.head;
         this.head = curHead.next;
         this.length--;
+        if (this.length === 0) {
+            this.tail = null;
+        }
         return curHead;
+    }
+
+    unshift(val) {
+        const newNode = new Node(val)
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = this.head;
+        }
+        newNode.next = this.head;
+        this.head = newNode;
+        this.length++;
+        return this;
     }
 
     get(pos) {
